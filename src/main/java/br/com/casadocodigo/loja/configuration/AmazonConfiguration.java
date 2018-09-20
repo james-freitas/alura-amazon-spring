@@ -13,7 +13,7 @@ public class AmazonConfiguration {
 
 	private static final String ACCESS_KEY="";
 	private static final String SECRET_KEY="";
-	private static final String REGION="";
+	private static final String REGION="us-east-1";
 	
 	
 	@Bean

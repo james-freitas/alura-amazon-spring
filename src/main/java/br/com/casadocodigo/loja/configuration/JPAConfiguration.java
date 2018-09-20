@@ -41,12 +41,24 @@ public class JPAConfiguration {
 		return props;
 	}
 
+    @Bean
+    @Profile("dev")
+    public DataSource dataSourceDev() {
+        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+        dataSource.setUsername("root");
+        dataSource.setPassword("root");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/casadocodigo");
+        dataSource.setDriverClassName("com.mysql.jdbc.Driver");
+        return dataSource;
+    }
+	
 	@Bean
+	@Profile("prod")
 	public DataSource dataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		dataSource.setUsername("root");
-		dataSource.setPassword("root");
-		dataSource.setUrl("jdbc:mysql://localhost:3306/casadocodigo");
+		dataSource.setUsername("casadocodigo");
+		dataSource.setPassword("casadocodigo");
+		dataSource.setUrl("jdbc:mysql://banco-casadocodigo.cm01qzyfynij.us-east-1.rds.amazonaws.com:3306/casadocodigo");
 		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
 		return dataSource;
 	}
